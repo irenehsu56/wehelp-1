@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>week 1</title>
+        <link rel="stylesheet" type="text/css" href="week1.css" />
+    </head>
+    <body>
+        <nav>
+            <div class="title">My Website</div>
+            <ul class="menu">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+            </ul>
+            <div class="open" onclick="openMenu()">☰</div>
+            <div class="mobile-menu" id="mobileMenu">
+                <div class="close" onclick="closeMenu()">✕</div>
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                </ul>
+            </div>
+        </nav>
+        <header>
+            <div class="welcome">Welcome to MyHome</div>
+        </header>
+        <main>
+            <div class="bar-container">
+                <div class="bar bar1">
+                    <img src="https://intranet.travel4u.com.tw/eWeb_t4u/IMGDB/002294/002327/002328/00065628.JPG" alt="Promotion 1">
+                    <span>Promotion 1</span>
+                </div>
+                <div class="bar bar2">
+                    <img src="https://intranet.travel4u.com.tw/eWeb_t4u/IMGDB/002294/002327/002328/00065628.JPG" alt="Promotion 2">
+                    <span>Promotion 2</span>
+                </div>
+                <div class="bar bar3">
+                    <img src="https://intranet.travel4u.com.tw/eWeb_t4u/IMGDB/002294/002327/002328/00065628.JPG" alt="Promotion 3">
+                    <span>Promotion 3</span>
+                </div>
+            </div>
+            <div class="content-container">
+                <div class="content content1">
+                    <img src="https://intranet.travel4u.com.tw/eWeb_t4u/IMGDB/002294/002327/002328/00065628.JPG" alt="Title 1">
+                    <div class="star">★</div>
+                    <div class="content-title">Title 1</div>
+                </div>
+                <div class="content content2">
+                    <img src="https://intranet.travel4u.com.tw/eWeb_t4u/IMGDB/002294/002327/002328/00065628.JPG" alt="Title 2">
+                    <div class="star">★</div>
+                    <div class="content-title">Title 2</div>
+                </div>
+                <div class="content content2">
+                    <img src="https://intranet.travel4u.com.tw/eWeb_t4u/IMGDB/002294/002327/002328/00065628.JPG" alt="Title 3">
+                    <div class="star">★</div>
+                    <div class="content-title">Title 3</div>
+                </div>
+                <div class="content content2">
+                    <img src="https://intranet.travel4u.com.tw/eWeb_t4u/IMGDB/002294/002327/002328/00065628.JPG" alt="Title 4">
+                    <div class="star">★</div>
+                    <div class="content-title">Title 4</div>
+                </div>
+                <div class="content content2">
+                    <img src="https://intranet.travel4u.com.tw/eWeb_t4u/IMGDB/002294/002327/002328/00065628.JPG" alt="Title 5">
+                    <div class="star">★</div>
+                    <div class="content-title">Title 5</div>
+                </div>
+                <div class="content content1">
+                    <img src="https://intranet.travel4u.com.tw/eWeb_t4u/IMGDB/002294/002327/002328/00065628.JPG" alt="Title 6">
+                    <div class="star">★</div>
+                    <div class="content-title">Title 6</div>
+                </div>
+                <div class="content content2">
+                    <img src="https://intranet.travel4u.com.tw/eWeb_t4u/IMGDB/002294/002327/002328/00065628.JPG" alt="Title 7">
+                    <div class="star">★</div>
+                    <div class="content-title">Title 7</div>
+                </div>
+                <div class="content content2">
+                    <img src="https://intranet.travel4u.com.tw/eWeb_t4u/IMGDB/002294/002327/002328/00065628.JPG" alt="Title 8">
+                    <div class="star">★</div>
+                    <div class="content-title">Title 8</div>
+                </div>
+                <div class="content content3">
+                    <img src="https://intranet.travel4u.com.tw/eWeb_t4u/IMGDB/002294/002327/002328/00065628.JPG" alt="Title 9">
+                    <div class="star">★</div>
+                    <div class="content-title">Title 9</div>
+                </div>
+                <div class="content content3">
+                    <img src="https://intranet.travel4u.com.tw/eWeb_t4u/IMGDB/002294/002327/002328/00065628.JPG" alt="Title 10">
+                    <div class="star">★</div>
+                    <div class="content-title">Title 10</div>
+                </div>
+            </div>
+
+        </main>
+        <script>
+            function openMenu(){
+                document
+                .getElementById("mobileMenu")
+                .classList.add("show");
+            }
+            function closeMenu(){
+                document
+                .getElementById("mobileMenu")
+                .classList.remove("show");
+            }
+        </script>
+    </body>
+</html>
