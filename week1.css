@@ -1,0 +1,189 @@
+body{
+    font-size: 20px;
+    margin: 0;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title{
+    font-weight: bold;
+    padding: 10px;
+}
+.menu{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    gap: 20px;
+}
+.open{
+    display: none;
+    padding: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+.mobile-menu{
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.3);/*陰影效果*/
+    transition:right 0.3s ease; /*動畫效果*/
+}
+.mobile-menu.show{
+    right: 0;
+}
+.mobile-menu ul{
+    list-style:none;
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+}
+.mobile-menu li{
+    padding: 20px;
+    text-align: center;
+}
+.close{
+    position:absolute;
+    top:10px;
+    right:10px;
+    cursor: pointer;
+}
+.welcome{
+    display: flex;
+    justify-content: center;/*水平置中*/
+    align-items: center;/*垂直對齊*/
+    width: 100%;
+    height: 250px;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #d4eef5;
+}
+main{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.bar-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 20px;
+}
+.bar{
+    display: flex;
+    align-items: center;
+    background-color: #b7e5f2;
+}
+.bar img{
+    width: 80px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.bar1{
+    grid-column: 1/4;
+}
+.bar2{
+    grid-column: 1/3;
+}
+.bar3{
+    grid-column: 3/4;
+}
+.content-container{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.content{
+    position: relative;
+}
+.content1{
+    grid-column: span 2;
+}
+.content2, .content3{
+    grid-column: span 1;
+}
+.content img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+.star{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: rgb(228, 175, 3);
+}
+.content-title{
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+@media(max-width: 1200px){
+    main{
+        width: 90%;
+    }
+    .bar-container{
+        grid-template-columns: 1fr 1fr;
+        width: 90%;
+    }
+    .bar1{
+        grid-column: 1/2;
+    }
+    .bar2{
+        grid-column: 2/3;
+    }
+    .bar3{
+        grid-column: 1/3;
+    }
+    .content-container{
+        width: 90%;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .content1, .content2{
+        grid-column: span 1;
+    }
+    .content3{
+        grid-column: span 2;
+    }
+}
+@media(max-width:600px){
+    main{
+        width: 90%;
+    }
+    .menu{
+        display: none;
+    }
+    .open{
+        display: block;
+    }
+    .bar-container{
+        grid-template-columns: 1fr;
+        width: 90%;
+    }
+    .bar1, .bar2, .bar3{
+        grid-column: span 1;
+    }
+    .content-container{
+        width: 90%;
+        grid-template-columns: 1fr;
+    }
+    .content1, .content2, .content3{
+        grid-column: span 1;
+    }
+}
