@@ -148,7 +148,6 @@ main{
 }
 #LoadMoreButton{
     padding: 10px 20px;
-    justify-content: center;
     cursor: pointer;
 }
 
