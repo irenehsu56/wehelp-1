@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>旅館資訊</title>
+        <link rel="stylesheet" href="/static/week4.css">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div>旅館的資訊</div>
+            </header>
+            <main>
+                <!-- Jinja2 的 if判斷式寫法，如果有找到旅館資料，則顯示旅館資訊 -->
+                {% if hotel %} 
+                    <div>
+                        {{ hotel["chinese_name"] }}、
+                        {{ hotel["english_name"] }}、
+                        {{ hotel["phone"] }}
+                    </div>
+                {% else %}
+                    <div>查詢不到相關資料</div>
+                {% endif %}
+
+                <a href="/">返回首頁</a>
+            </main>
+        </div>
+    </body>
+</html>
