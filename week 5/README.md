@@ -14,7 +14,7 @@ create table member(
 show tables;
 ```
 
-![Task 2 Result](Task 2.png)
+![Task 2 Result](Task%202.png)
 
 ## Task 3
 
@@ -35,9 +35,9 @@ set sql_safe_updates=0;
 update member set name='test2' where email='test@test.com';
 ```
 
-![Task 3 Result](Task 3-1.png)
-![Task 3 Result](Task 3-2.png)
-![Task 3 Result](Task 3-3.png)
+![Task 3 Result](Task%203-1.png)
+![Task 3 Result](Task%203-2.png)
+![Task 3 Result](Task%203-3.png)
 
 ## Task 4
 
@@ -51,7 +51,7 @@ select avg(follower_count) from(
 ) as top2;
 ```
 
-![Task 4 Result](Task 4.png)
+![Task 4 Result](Task%204.png)
 
 ## Task 5
 
@@ -84,5 +84,5 @@ inner join member on message.member_id=member.id
 group by member.email;
 ```
 
-![Task 5 Result](Task 5-1.png)
-![Task 5 Result](Task 5-2.png)
+![Task 5 Result](Task%205-1.png)
+![Task 5 Result](Task%205-2.png)
