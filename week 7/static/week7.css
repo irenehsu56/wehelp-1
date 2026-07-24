@@ -1,0 +1,85 @@
+body{
+    background-color: white;
+    margin: 0;
+}
+.container{
+    max-width: 600px;
+    margin: 50px auto;
+    border: 1px solid #ddd;
+}
+header{
+    background-color: #041b32;
+    color: white;
+    font-size: 25px;
+    font-weight:bold;
+    text-align: center;
+    padding: 25px 0;
+}
+main{
+    text-align: center;
+    margin: 20px 0 40px;
+}
+.signup, .login{
+    font-size: 20px;
+    font-weight: bold;
+    margin:20px 0;
+}
+.input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+}
+.input label{
+    width:50px;
+    text-align:right;
+    margin-right:15px;
+}
+.input input{
+    width:200px;
+    height: 30px;
+    font-size: 20px;
+}
+button{
+    font-size: 15px;
+    margin: 10px auto;
+}
+hr{
+    margin: 0;
+    border: none;
+    border: 1px solid #ddd;
+}
+.message-board {
+    width: 430px;
+    max-width: calc(100% - 40px);
+    margin: 30px auto;
+}
+.message-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 10px 0;
+    font-size: 20px;
+    text-align: left;
+}
+.message-text {
+    display: block;
+    flex: 0 1 auto;
+    min-width: 0;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+.delete-button {
+    flex-shrink: 0;
+    margin: 3px 0 0 10px;
+    padding: 1px 6px;
+    font-size: 12px;
+    line-height: 1.2;
+    cursor: pointer;
+}
+.token{
+    max-width: calc(100%-40px);
+    margin: 15px auto;
+    overflow-wrap: anywhere;
+    word-break: break-all;
+}
