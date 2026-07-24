@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>會員頁面</title>
+        <link rel="stylesheet" type="text/css" href="/static/week7.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div>歡迎光臨，這是會員頁</div>
+            </header>
+            <main>
+                <div>
+                    <p>{{ name }}，歡迎登入系統</p>
+                    <a href="/logout">登出系統</a>
+                </div>
+                <hr>
+
+                <h2>MCP 伺服器設定</h2>
+                <p>請使用
+                    <span>http://127.0.0.1:8000/mcp/</span>
+                    網址
+                </p>
+                <p>點擊產生 Token 取得金鑰</p>
+
+                <button type="button" onclick="createToken();">產生 Token</button>
+
+                <p id="token" class="token">{{ token }}</p>
+                <hr>
+
+                <h2>快來留言吧</h2>
+                <form id="message-form">
+                    <div class="input">
+                        <label for="content">內容</label>
+                        <input type="text" id="content">
+                    </div>
+
+                    <button type="button" onclick="createMessage();">送出</button>
+                </form>
+                <hr/>
+                <div id="board" class="message-board"></div>
+            </main>
+        </div>
+        <script>
+            const messageForm=document.querySelector("#message-form");
+
+            messageForm.addEventListener("submit", function(event){
+                event.preventDefault();
+                createMessage();
+            });
+
+            async function createToken(){
+                try{
+                    const response=await fetch("/api/token", {
+                            method: "PUT"
+                        });
+
+                    const data=await response.json();
+
+                    if(data.ok){
+                        const tokenElement=document.getElementById("token");
+                        tokenElement.textContent=data.token;
+                    }else{
+                        alert("Token 產生失敗，請重新登入後再試");
+                    }
+                }catch(error){
+                    console.error("產生 Token 時發生錯誤：", error);
+                    alert("系統發生錯誤");
+                }
+            }
+
+            async function createMessage(){
+                const contentInput=document.querySelector("#content");
+                const content=contentInput.value.trim();
+
+                if(content===""){
+                    alert("請輸入留言內容");
+                    return;
+                }
+
+                try{
+                    const response=await fetch("/api/message",{
+                            method: "POST",
+                            headers: {"Content-Type": "application/json"},
+                            body: JSON.stringify({content: content})
+                        }
+                    );
+
+                    const result=await response.json();
+
+                    if(result.ok){
+                        // 清空留言輸入框
+                        contentInput.value="";
+                        // 重新取得所有留言
+                        getMessage();
+                    }else{
+                        alert("留言新增失敗");
+                    }
+                }catch(error){
+                    console.error("新增留言時發生錯誤：",error);
+                    alert("系統發生錯誤");
+                }
+            }
+
+            async function getMessage(){
+                try{
+                    const response=await fetch("/api/message",{
+                            method: "GET",
+                        }
+                    );
+
+                    const result=await response.json();
+
+                    if(!result.ok){
+                        alert("無法取得留言");
+                        return;
+                    }
+
+                    const board=document.querySelector("#board");
+
+                    // 先清空原本的留言
+                    board.innerHTML="";
+
+                    for(
+                        let i=0;i<result.data.length;i++
+                    ){
+                        const message=result.data[i];
+
+                        // 建立一則留言的 div
+                        const messageElement=document.createElement("div");
+                        messageElement.className="message-item";
+
+                        // 建立包住姓名與留言內容的區塊
+                        const messageText=document.createElement("span");
+                        messageText.className="message-text";
+
+                        // 建立留言姓名
+                        const nameElement=document.createElement("strong");
+                        nameElement.textContent=message.name+" : ";
+
+                        // 建立留言內容
+                        const contentElement=document.createElement("span");
+                        contentElement.textContent=message.content+"  ";
+
+                        // 把姓名和內容放進 messgeText
+                        messageText.appendChild(nameElement);
+                        messageText.appendChild(contentElement);
+
+                        // 再把 messageText 放進整則留言
+                        messageElement.appendChild(messageText);
+
+                        // 只有自己的留言才顯示刪除按鈕
+                        if(message.self===true) {
+                            const deleteButton=document.createElement("button");
+
+                            deleteButton.type="button";
+                            deleteButton.textContent="X";
+                            deleteButton.className="delete-button";
+
+                            deleteButton.addEventListener(
+                                "click",
+                                function(){deleteMessage(message.id);}
+                            );
+
+                            messageElement.appendChild(deleteButton);
+                        }
+
+                        // 把留言顯示到留言板
+                        board.appendChild(messageElement);
+                    }
+                }catch(error){
+                    console.error("取得留言時，發生錯誤：", error);
+                    alert("系統發生錯誤");
+                }
+            }
+
+            async function deleteMessage(messageId){
+                const confirmed = confirm("確定要刪除這則留言嗎？");
+
+                if(!confirmed){return;}
+
+                try{
+                    const response=await fetch("/api/message/" + messageId, {
+                            method: "DELETE"
+                        }
+                    );
+
+                    const result=await response.json();
+
+                    if(result.ok){
+                        getMessage(); // 刪除成功後，重新載入留言
+                    }else{
+                        alert("留言刪除失敗，可能不是你的留言");
+                    }
+                }catch(error){
+                    console.error("刪除留言時發生錯誤：", error);
+                    alert("系統發生錯誤");
+                }
+            }
+            getMessage();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>week 7 任務</title>
+        <link rel="stylesheet" type="text/css" href="/static/week7.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div>歡迎光臨，請註冊登入系統</div>
+            </header>
+            <main>
+                <div class="signup">註冊帳號</div>
+                <form action="/signup" method="POST" onsubmit="return checkSignupForm();">
+                    <div class="input">
+                        <label for="signup-name">姓名</label>
+                        <input type="text" id="signup-name" name="name" required/>
+                    </div>
+
+                    <div class="input">
+                        <label for="signup-email">信箱</label>
+                        <input type="email" id="signup-email" name="email" required/>
+                    </div>
+
+                    <div class="input">
+                        <label for="signup-password">密碼</label>
+                        <input type="password" id="signup-password" name="password" required/>
+                    </div>
+
+                    <button type="submit">註冊</button>
+                </form>
+                <hr>
+
+                <div class="login">登入系統</div>
+                <form action="/login" method="POST" onsubmit="return checkLoginForm();">
+                    <div class="input">
+                        <label for="login-email">信箱</label>
+                        <input type="text" id="login-email" name="email" required/>
+                    </div>
+
+                    <div class="input">
+                        <label for="login-password">密碼</label>
+                        <input type="password" id="login-password" name="password" required/>
+                    </div>
+
+                    <button type="submit">登入</button>
+                </form>
+            </main>
+        </div>
+
+        <script>
+            // 檢查註冊表單
+            function checkSignupForm() {
+                const name=document
+                    .querySelector("#signup-name")
+                    .value
+                    .trim();
+
+                const email=document
+                    .querySelector("#signup-email")
+                    .value
+                    .trim();
+
+                const password=document
+                    .querySelector("#signup-password")
+                    .value
+                    .trim();
+
+                if (name==="" || email==="" || password==="") {
+                    alert("請輸入姓名、信箱和密碼");
+                    return false;
+                }
+
+                return true;
+            }
+            // 檢查登入表單
+            function checkLoginForm() {
+                const email=document
+                    .querySelector("#login-email")
+                    .value
+                    .trim();
+
+                const password=document
+                    .querySelector("#login-password")
+                    .value
+                    .trim();
+
+                if (email==="" || password==="") {
+                    alert("請輸入信箱和密碼");
+                    // 阻止表單送出
+                    return false;
+                }
+
+                return true;
+            }
+        </script>
+    </body>
+</html>
